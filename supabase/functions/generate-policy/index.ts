@@ -11,7 +11,7 @@ serve(async (req) => {
       businessDescription = body.businessDescription;
       policyType = body.policyType;
       industry = body.industry;
-    } catch (err) {
+    } catch {
       return new Response(JSON.stringify({ error: "Invalid JSON input." }), { status: 400, headers: { "Content-Type": "application/json" } });
     }
     if (!businessDescription || !policyType || !industry) {

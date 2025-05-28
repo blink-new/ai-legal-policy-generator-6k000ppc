@@ -1,7 +1,4 @@
-const SUPABASE_FUNCTION_URL =
-  import.meta.env.MODE === 'development'
-    ? '/functions/v1/generate-policy'
-    : 'https://wmgmovyyfdkglrnauzjn.functions.supabase.co/generate-policy';
+const SUPABASE_FUNCTION_URL = 'https://wmgmovyyfdkglrnauzjn.functions.supabase.co/generate-policy';
 
 export async function generatePolicy({ businessDescription, policyType, industry }: { businessDescription: string, policyType: string, industry: string }) {
   const res = await fetch(SUPABASE_FUNCTION_URL, {
@@ -12,7 +9,7 @@ export async function generatePolicy({ businessDescription, policyType, industry
   let data;
   try {
     data = await res.json();
-  } catch (e) {
+  } catch {
     throw new Error('Unexpected response from server. Please try again or contact support.');
   }
   if (!res.ok) {
